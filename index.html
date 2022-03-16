@@ -10,35 +10,19 @@
     <button id="getRooms">Get Rooms</button>
     <br>
     <div id="output"></div>
-
-    <script>
-        const token = 'M2Y5ZDdiMDgtZGYwMi00YWRiLTg3ZTctMjgwMjQ5NzhmYjZiNWEwNTE2OTQtNTg0_P0A1_d068f91d-d29e-4173-a09d-365c3fb6e36e';
-        document.getElementById('getRooms').addEventListener('click', getRooms);
-        function getRooms(){
-            fetch('https://webexapis.com/v1/rooms', {
-                method: 'GET', 
-                headers : {
-                    'content-type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                }
-            })
-            .then(function(res){
-                return res.json();
-            })
-            .then(function(data){
-                let output = '';
-
-                for(let i=0;i<data.items.length;i++){
-                    output+=`
-                    <ul>
-                        <li>${data.items[i].created}</li>
-                        <li>${data.items[i].title}</li>
-                    </ul>
-                    `;
-                }
-                document.getElementById('getRooms').innerHTML = output;
-            })
-        }
-    </script>
+    <br>
+    <br>
+    <label for="rName">Room Name:</label>
+    <input type="text" id="rName"></input>
+    <button id="createRoom">Create Room</button>
+    <br>
+    <br>
+    <label for="rId">Room ID:</label>
+    <input type="text" id="rId"></input>
+    <button id="roomDetails">Get Details</button>
+    <br>
+    <div id="outputrd"></div>
+    <div id="outputmd"></div>
+    <script src="webexApi.js"></script>
 </body>
 </html>
