@@ -1,5 +1,5 @@
 
-const token = 'YjBjZTI3ZDUtZGYxNS00OWVmLTk1YWUtYThmMWIwNTY3NmY1OGMwYWY5YTQtN2Mw_PF84_1eb65fdf-9643-417f-9974-ad72cae0e10f';
+const token = 'Your Token Here';
 //console.log(token);
 document.getElementById('getRooms').addEventListener('click', listRooms);
 document.getElementById('createRoom').addEventListener('click', createRoom);
