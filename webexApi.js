@@ -35,7 +35,7 @@ function listRooms(){
         let output = '';
 
         for(let i=0;i<data.items.length;i++){
-            console.log(String(data.items[i].id));
+            //console.log(String(data.items[i].id));
             output+=`
             <ul>
                 <li>${data.items[i].created}</li>
@@ -43,9 +43,48 @@ function listRooms(){
             </ul>
             `;
         }
-        
+        getRoomId(data.items[0].title);
         document.getElementById('output').innerHTML = output;
     })
+}
+
+/*
+Function Name: getRoomId
+Description: gets the room id of a specific room in order to use it 
+             throughout the application.
+Parameters : rName : The name of the room the id belongs to.
+*/
+
+function getRoomId(rName) {
+    let rId;
+
+    fetch('https://webexapis.com/v1/rooms', {
+        method: 'GET', 
+        headers : {
+            'content-type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(function(res){
+        //console.log(res.json());
+        return res.json();
+    })
+    .then(function(data){
+        //console.log(data);
+
+        /*
+        output of JSON object in a targeted HTML element
+        comment out below to use above console logging functionality
+        */
+
+        for(let i=0;i<data.items.length;i++){
+            //console.log(String(data.items[i].id));
+            let obj = data.items.find(obj => obj.title == rName);
+            console.log('we found : ' + obj.title + ' w/ id : ' + obj.id);
+            rId = obj.id;
+        }
+    })
+    return rId;
 }
 
 /*
