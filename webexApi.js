@@ -1,5 +1,5 @@
 
-const token = 'Your Token Here';
+const token = 'Your Code here';
 //console.log(token);
 document.getElementById('getRooms').addEventListener('click', listRooms);
 document.getElementById('createRoom').addEventListener('click', createRoom);
@@ -77,12 +77,9 @@ function getRoomId(rName) {
         comment out below to use above console logging functionality
         */
 
-        for(let i=0;i<data.items.length;i++){
-            //console.log(String(data.items[i].id));
-            let obj = data.items.find(obj => obj.title == rName);
-            console.log('we found : ' + obj.title + ' w/ id : ' + obj.id);
-            rId = obj.id;
-        }
+        let obj = data.items.find(obj => obj.title == rName);
+        console.log('we found : ' + obj.title + ' w/ id : ' + obj.id);
+        rId = obj.id;
     })
     return rId;
 }
