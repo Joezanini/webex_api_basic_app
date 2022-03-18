@@ -1,5 +1,5 @@
 
-const token = 'YjZmMzM5NWItMWFiMy00MGYyLThmZjctNDM4YTRhZTU3YzQyNGYxYzc4MjAtN2E4_PF84_1eb65fdf-9643-417f-9974-ad72cae0e10f';
+const token = 'Your Token Here';
 //console.log(token);
 document.getElementById('getRooms').addEventListener('click', listRooms);
 document.getElementById('createRoom').addEventListener('click', createRoom);
@@ -57,8 +57,6 @@ Parameters : rName : The name of the room the id belongs to.
 */
 
 function getRoomId(rName) {
-    console.log(rName.length);
-    console.log('trying to figure out whu this is not working');
     let rId = fetch('https://webexapis.com/v1/rooms', {
         method: 'GET', 
         headers : {
@@ -71,27 +69,11 @@ function getRoomId(rName) {
         return res.json();
     })
     .then(function(data){
-        console.log(typeof(rName));
-        console.log('in function ' + rName);
-        //console.log(data.items.find(obj => obj.title == rName));
-        console.log('rName : ' + rName);
-        for(let i=0;i<data.items.length;i++){
-            //console.log(rName);
-            //console.log(data.items[i].title.length)
-            if (data.items[i].title.replace(/\s+/g, "") == rName.replace(/\s+/g, "")) {
-                console.log('found');
-                return data.items[i].id;
-            }
-        }
+        let obj = data.items.find(obj => obj.title.replace(/\s+/g, "") == rName.replace(/\s+/g, ""));
         
-        /*
-        console.log(obj);
-        console.log(typeof(obj));
         return obj.id;
-        */
     })
 
-    //console.log('this is the rId : ' + rId);
     return rId;
 }
 
