@@ -136,9 +136,15 @@ Description: Shows details of a room by ID.
 To Do's : use room name instead of ID.
 */
 
-function getRoomDetails() {
-    let identity = String(document.getElementById('rId').value);
-    fetch('https://webexapis.com/v1/rooms/' + identity, {
+async function getRoomDetails() {
+    //let identity = String(document.getElementById('rId').value);
+
+    let rName = String(document.getElementById('rId').value);
+    console.log(rName);
+    let val = await getRoomId(rName);
+    console.log('this is the val : ' + val);
+
+    fetch('https://webexapis.com/v1/rooms/' + val, {
         method: 'GET', 
         headers : {
             'content-type': 'application/json',
@@ -159,7 +165,7 @@ function getRoomDetails() {
             </ul>
             `;
         document.getElementById('outputrd').innerHTML = output;
-        getMeetingDetails(identity);
+        getMeetingDetails(val);
     })
 }
 
