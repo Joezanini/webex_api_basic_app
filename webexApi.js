@@ -133,7 +133,6 @@ function createRoom() {
 /*
 Function Name: getRoomDetails
 Description: Shows details of a room by ID.
-To Do's : use room name instead of ID.
 */
 
 async function getRoomDetails() {
