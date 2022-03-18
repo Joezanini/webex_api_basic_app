@@ -77,6 +77,13 @@ function getRoomId(rName) {
     return rId;
 }
 
+/*
+Function Name: deleteRoom()
+Description: Deletes a room. Takes in a room Name and
+             uses the getRoomId() function to properly 
+             make API call. 
+*/
+
 async function deleteRoom() {
     let rName = String(document.getElementById('delRoom').value);
     console.log(rName);
@@ -102,8 +109,6 @@ Description: Creates a room. The authenticated user is automatically
              clicked, a new list with new room populated on list will
              be generated upon successfull authentication and 200 
              response.
-To do's: add a text field for entering custom room names and 
-         authentication key values
 */
 
 function createRoom() {
@@ -128,6 +133,7 @@ function createRoom() {
 /*
 Function Name: getRoomDetails
 Description: Shows details of a room by ID.
+To Do's : use room name instead of ID.
 */
 
 function getRoomDetails() {
